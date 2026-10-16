@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сетка — тарифы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-ink: #14161b;
+    --color-ink-soft: #5b616e;
+    --color-ink-faint: #8b919c;
+    --color-brand: #3b5bfd;
+    --color-brand-ink: #2a44d4;
+    --color-brand-tint: #eef1ff;
+    --color-surface: #ffffff;
+    --color-canvas: #f5f6f8;
+    --color-line: #e4e7ec;
+    --color-danger: #d92d20;
+    --color-success: #12805c;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 72px;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --text-xs: 13px;
+    --text-sm: 14px;
+    --text-md: 16px;
+    --text-lg: 20px;
+    --text-xl: 28px;
+    --text-2xl: 44px;
+
+    --shadow-card: 0 1px 2px rgba(20, 22, 27, 0.04), 0 8px 24px rgba(20, 22, 27, 0.06);
+    --font: "Manrope", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: var(--text-md);
+    line-height: 1.5;
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--space-5); }
+
+  /* ---------- header ---------- */
+  .header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .header .wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    height: 64px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 800;
+    font-size: var(--text-lg);
+    letter-spacing: -0.02em;
+  }
+  .logo-mark {
+    width: 24px; height: 24px;
+    border-radius: var(--radius-sm);
+    background:
+      linear-gradient(var(--color-brand), var(--color-brand)) 0 0 / 10px 10px no-repeat,
+      linear-gradient(var(--color-brand), var(--color-brand)) 14px 0 / 10px 10px no-repeat,
+      linear-gradient(var(--color-brand), var(--color-brand)) 0 14px / 10px 10px no-repeat,
+      linear-gradient(var(--color-brand-tint), var(--color-brand-tint)) 14px 14px / 10px 10px no-repeat;
+  }
+  .nav { display: flex; gap: var(--space-5); flex: 1; }
+  .nav a { font-size: var(--text-sm); font-weight: 600; color: var(--color-ink-soft); }
+  .nav a:hover { color: var(--color-ink); }
+  .header-actions { display: flex; gap: var(--space-2); }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 20px;
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--color-brand); color: #fff; }
+  .btn-primary:hover { background: var(--color-brand-ink); }
+  .btn-ghost { background: var(--color-surface); color: var(--color-ink); border-color: var(--color-line); }
+  .btn-ghost:hover { border-color: var(--color-ink-faint); }
+  .btn-block { width: 100%; padding-top: var(--space-3); padding-bottom: var(--space-3); }
+
+  .btn-upgrade {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 5px;
+    padding: 10px 14px;
+    background: var(--color-surface);
+    color: #9aa0aa;
+    border: 1px solid var(--color-line);
+    cursor: pointer;
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding: var(--space-8) 0 var(--space-7); text-align: center; }
+  .hero h1 {
+    font-size: var(--text-2xl);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin: 0 0 var(--space-4);
+  }
+  .hero p {
+    font-size: var(--text-lg);
+    color: var(--color-ink-soft);
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  .billing-toggle {
+    display: inline-flex;
+    margin-top: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: var(--space-1);
+  }
+  .billing-toggle button {
+    font-family: var(--font);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink-soft);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .billing-toggle button.is-on { background: var(--color-ink); color: #fff; }
+
+  /* ---------- plans ---------- */
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .plan {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+  }
+  .plan-featured { border-radius: 16px; }
+
+  .plan-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+  .plan-name { font-size: var(--text-lg); font-weight: 700; margin: 0; }
+  .badge {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-brand-ink);
+    background: var(--color-brand-tint);
+    border-radius: 999px;
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .price {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .price-caption {
+    font-size: var(--text-sm);
+    color: var(--color-ink-faint);
+    margin: 0 0 var(--space-5);
+  }
+  .plan-desc { font-size: var(--text-sm); color: var(--color-ink-soft); margin: 0 0 var(--space-5); min-height: 42px; }
+
+  .features { list-style: none; margin: var(--space-5) 0 0; padding: var(--space-5) 0 0; border-top: 1px solid var(--color-line); }
+  .features li {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-ink);
+    padding: var(--space-1) 0;
+  }
+  .features li::before {
+    content: "";
+    flex: none;
+    width: 16px; height: 16px;
+    margin-top: 2px;
+    border-radius: 999px;
+    background: var(--color-brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%233b5bfd' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+  }
+  .term { border-bottom: 1px dotted var(--color-ink-faint); }
+
+  /* ---------- calculator ---------- */
+  .section { padding: var(--space-8) 0 0; }
+  .section-title { font-size: var(--text-xl); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 var(--space-2); }
+  .section-lead { color: var(--color-ink-soft); margin: 0 0 var(--space-6); }
+
+  .calc {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+  .field { margin-bottom: var(--space-5); }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: var(--text-sm); font-weight: 700; margin-bottom: var(--space-2); }
+  .field-row { display: flex; gap: var(--space-2); }
+  .input {
+    width: 100%;
+    font-family: var(--font);
+    font-size: var(--text-md);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+    line-height: 24px;
+  }
+  .input:focus { outline: 2px solid var(--color-brand-tint); border-color: var(--color-brand); }
+  .hint { font-size: var(--text-sm); color: var(--color-ink-faint); margin-top: var(--space-2); }
+
+  .error { font-size: 12px; font-weight: 400; color: #f08a80; margin-top: var(--space-1); }
+
+  .icon-btn {
+    flex: none;
+    width: 42px;
+    font-size: var(--text-lg);
+    line-height: 1;
+    color: var(--color-ink-soft);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .summary {
+    background: var(--color-canvas);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+  }
+  .summary-row { display: flex; justify-content: space-between; font-size: var(--text-sm); color: var(--color-ink-soft); padding: var(--space-1) 0; }
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--color-line);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-5);
+    font-weight: 700;
+  }
+  .summary-total strong { font-size: var(--text-xl); letter-spacing: -0.02em; }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 760px; }
+  .faq details { border-bottom: 1px solid var(--color-line); padding: var(--space-4) 0; }
+  .faq summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--space-4); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--color-ink-faint); font-weight: 600; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq p { color: var(--color-ink-soft); margin: var(--space-3) 0 0; }
+
+  /* ---------- footer ---------- */
+  .footer { margin-top: var(--space-8); padding: var(--space-6) 0; border-top: 1px solid var(--color-line); background: var(--color-surface); }
+  .footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); flex-wrap: wrap; font-size: var(--text-sm); color: var(--color-ink-faint); }
+  .footer nav { display: flex; gap: var(--space-5); }
+  .footer a:hover { color: var(--color-ink); }
+
+  @media (max-width: 880px) {
+    .plans { grid-template-columns: 1fr; }
+    .calc { grid-template-columns: 1fr; }
+    .nav { display: none; }
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark"></span>Сетка</a>
+    <nav class="nav">
+      <a href="#">Продукт</a>
+      <a href="#">Шаблоны</a>
+      <a href="#">Тарифы</a>
+      <a href="#">Блог</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost" href="#">Войти</a>
+      <a class="btn btn-primary" href="#">Попробовать</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Тарифы, которые растут вместе с командой</h1>
+    <p>Планируйте спринты, ведите задачи и встречи в одном месте. Платите только за то, чем пользуетесь.</p>
+    <div class="billing-toggle" role="group" aria-label="Период оплаты">
+      <button type="button">Ежемесячно</button>
+      <button type="button" class="is-on">Ежегодно −20%</button>
+    </div>
+  </section>
+
+  <section class="plans" aria-label="Тарифы">
+    <article class="plan">
+      <div class="plan-head">
+        <h2 class="plan-name">Старт</h2>
+      </div>
+      <p class="price">0 ₽</p>
+      <p class="price-caption">навсегда</p>
+      <p class="plan-desc">Для небольших команд, которые только начинают.</p>
+      <a class="btn btn-ghost btn-block" href="#">Текущий тариф</a>
+      <ul class="features">
+        <li>До 3 проектов</li>
+        <li>До 5 участников</li>
+        <li>Базовые доски и списки</li>
+        <li>Поддержка по почте</li>
+      </ul>
+    </article>
+
+    <article class="plan plan-featured">
+      <div class="plan-head">
+        <h2 class="plan-name">Команда</h2>
+        <span class="badge">Популярный</span>
+      </div>
+      <p class="price">1 190 ₽</p>
+      <p class="price-caption">за участника в месяц</p>
+      <p class="plan-desc">Всё, чтобы команда работала в одном ритме.</p>
+      <button class="btn-upgrade" type="button">Перейти на Команду</button>
+      <ul class="features">
+        <li>Неограниченные проекты</li>
+        <li>До 50 участников</li>
+        <li>Спринты, таймлайн и отчёты</li>
+        <li>Интеграции с GitHub и Slack</li>
+        <li>Приоритетная поддержка</li>
+      </ul>
+    </article>
+
+    <article class="plan">
+      <div class="plan-head">
+        <h2 class="plan-name">Бизнес</h2>
+      </div>
+      <p class="price">2 490 ₽</p>
+      <p class="price-caption">за участника в месяц</p>
+      <p class="plan-desc">Для компаний с требованиями к безопасности.</p>
+      <a class="btn btn-ghost btn-block" href="#">Связатся с нами</a>
+      <ul class="features">
+        <li>Всё из тарифа Команда</li>
+        <li>Вход через <span class="term">SSO</span></li>
+        <li>Журнал действий</li>
+        <li><span class="term">SLA</span> 99,9%</li>
+        <li>Выделенный менеджер</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Посчитайте стоимость</h2>
+    <p class="section-lead">Итог обновится, когда вы измените параметры.</p>
+
+    <div class="calc">
+      <div>
+        <div class="field">
+          <label for="seats">Количество участников</label>
+          <input class="input" id="seats" type="number" value="12" min="1">
+          <div class="hint">Можно изменить в любой момент</div>
+        </div>
+        <div class="field">
+          <label for="plan">Тариф</label>
+          <select class="input" id="plan">
+            <option>Команда</option>
+            <option>Бизнес</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="promo">Промокод</label>
+          <div class="field-row">
+            <input class="input" id="promo" type="text" value="SETKA2025">
+            <button class="icon-btn" type="button">↻</button>
+          </div>
+          <div class="error">Промокод не найден</div>
+        </div>
+      </div>
+
+      <aside class="summary">
+        <div class="summary-row"><span>Команда × 12</span><span>14 280 ₽</span></div>
+        <div class="summary-row"><span>Скидка за год</span><span>−2 856 ₽</span></div>
+        <div class="summary-total"><span>Итого в месяц</span><strong>11 424 ₽</strong></div>
+        <a class="btn btn-primary btn-block" href="#">Оформить</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <h2 class="section-title">Вопросы</h2>
+    <details open>
+      <summary>Можно ли сменить тариф в середине месяца?</summary>
+      <p>Да. Разница пересчитается пропорционально и попадёт в следующий счёт.</p>
+    </details>
+    <details>
+      <summary>Что будет, если участников станет больше лимита?</summary>
+      <p>Мы предупредим заранее и предложим перейти на следующий тариф. Ничего не отключится без вашего решения.</p>
+    </details>
+    <details>
+      <summary>Вы возвращаете деньги?</summary>
+      <p>Да, в течение 14 дней после оплаты, без вопросов.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Сетка</span>
+    <nav>
+      <a href="#">Условия</a>
+      <a href="#">Конфиденциальность</a>
+      <a href="#">Контакты</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
