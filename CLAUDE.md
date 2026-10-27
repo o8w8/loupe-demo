@@ -30,6 +30,36 @@ When an issue asks you to apply review notes:
 - **One pull request per issue**, covering all the notes in it.
 - **In the PR description**, list every note by its number with one line on
   what changed, or why it was skipped. The reviewer reads this, not the diff.
+- **Reference the issue** with `Ref #<issue number>` in the PR description
+  (not `Fixes` — the issue stays open until the reviewer accepts each note).
+- **End the PR description with a status block** Loupe reads to update each
+  note. One line per note you handled, `done` or `skipped` with a short
+  reason in the reviewer's language:
+
+  ```
+  <!-- loupe
+  1: done
+  2: skipped — непонятно, убрать сообщение или перенести
+  -->
+  ```
+
+## Follow-up comments on design review issues
+
+The reviewer answers from Loupe by commenting on the same issue. Comments
+that mention `@claude` are new work:
+
+- `@claude **Заметка N** — вернула после проверки: …` — the fix for note N
+  was not right. Read the comment (and the "now" screenshot if attached),
+  fix it again.
+- `@claude **Заметка N** — ответ: …` — the answer to a note you skipped.
+  Now apply it.
+
+For either, open a **new** pull request with `Ref #<issue>` and a status
+block that lists only the notes it addresses. Leave notes that weren't
+mentioned alone.
+
+`✅ **Заметка N** принята.` means the reviewer accepted note N — nothing to do.
+Comments without `@claude` are the team talking; don't act on them.
 
 Issues additionally labelled `needs-decision` are for humans to discuss. Do
 not act on them unless someone explicitly asks you to in a comment.
