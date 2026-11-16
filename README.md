@@ -1,8 +1,13 @@
 # loupe-demo
 
-Демо-стейджинг для Loupe — инструмента дизайн-ревью, где заметки на странице
-превращаются в задачи, которые подхватывает агент.
+A demo staging site for Loupe — the design-review tool where notes left on a
+live page turn into tasks an agent picks up.
 
-Сайт — страница тарифов вымышленного продукта «Сетка». Это одна страница
-`index.html` без сборки: всё, включая дизайн-систему (переменные в `:root`),
-лежит в одном файле.
+The site is the pricing page of a made-up product, **Grid**. It's one file,
+`index.html`, with no build step: everything, including the design system
+(variables in `:root`), lives in that file. It has a few deliberate flaws to
+try Loupe on — a pale "Current plan" button, a typo in "Contakt us", a dim
+"−20%" badge.
+
+The Russian version (Сетка) is at `ru/index.html` → `/ru/`.
+
